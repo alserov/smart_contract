@@ -1,0 +1,106 @@
+basePath: /v1
+definitions:
+  models.Deposit:
+    properties:
+      amount:
+        type: integer
+      from:
+        type: string
+    type: object
+  models.Withdraw:
+    properties:
+      amount:
+        type: integer
+      to:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Wallet that interacts with smart contract
+  title: Wallet api
+  version: "1.0"
+paths:
+  /balance:
+    get:
+      consumes:
+      - application/json
+      description: Get wallet balance
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get wallet balance
+      tags:
+      - wallet
+  /deposit:
+    post:
+      consumes:
+      - application/json
+      description: Deposit wallet balance
+      parameters:
+      - description: deposit
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Deposit'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Deposit wallet balance
+      tags:
+      - wallet
+  /withdraw:
+    post:
+      consumes:
+      - application/json
+      description: Withdraw wallet balance
+      parameters:
+      - description: withdraw
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Withdraw'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Withdraw wallet balance
+      tags:
+      - wallet
+swagger: "2.0"
