@@ -14,8 +14,6 @@ import (
 type contract struct {
 	cl   *ethclient.Client
 	conn *api.Api
-
-	contractAddr string
 }
 
 func (c contract) Deposit(ctx context.Context, dep models.Deposit) error {

@@ -41,7 +41,7 @@ func (c *Contract) GetBalance(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Write(b)
+	_, _ = w.Write(b)
 
 	return nil
 }

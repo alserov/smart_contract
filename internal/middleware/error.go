@@ -10,7 +10,7 @@ func WithErrorHandler(fn func(w http.ResponseWriter, r *http.Request) error) fun
 		if err := fn(w, r); err != nil {
 			msg, st := utils.FromError(err)
 			w.WriteHeader(st)
-			w.Write([]byte(msg))
+			_, _ = w.Write([]byte(msg))
 			return
 		}
 	}
